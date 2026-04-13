@@ -1,0 +1,18 @@
+# Variables de entorno (contiene API keys - NUNCA subir)
+.env
+
+# Entorno virtual
+venv/
+
+# Base de datos vectorial (se regenera sola)
+backend/vectordb/chroma_data/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Kiro
+.kiro/
