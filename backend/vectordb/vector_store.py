@@ -5,10 +5,8 @@ from pathlib import Path
 
 CHROMA_PATH = os.getenv("CHROMA_DB_PATH", "./vectordb/chroma_data")
 
-# Usar embeddings locales gratuitos con sentence-transformers
-embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
-    model_name="paraphrase-multilingual-MiniLM-L12-v2"
-)
+# Usar embeddings ONNX de ChromaDB — no necesita PyTorch, mucho mas ligero
+embedding_fn = embedding_functions.ONNXMiniLM_L6_V2()
 
 _client = None
 _collection = None
