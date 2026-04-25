@@ -5,7 +5,6 @@
   },
   "deploy": {
     "startCommand": "dotnet out/CenfeFitBot.dll",
-    "healthcheckPath": "/health",
-    "restartPolicyType": "ON_FAILURE"
+    "healthcheckPath": "/health"
   }
 }
