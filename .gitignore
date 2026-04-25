@@ -1,7 +1,7 @@
 # Variables de entorno (contiene API keys - NUNCA subir)
 .env
 
-# Entorno virtual
+# Entorno virtual Python
 venv/
 
 # Base de datos vectorial (se regenera sola)
@@ -13,6 +13,10 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
+
+# C# build artifacts
+backend-csharp/bin/
+backend-csharp/obj/
 
 # Kiro
 .kiro/
