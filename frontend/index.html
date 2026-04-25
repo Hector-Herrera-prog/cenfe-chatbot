@@ -569,7 +569,8 @@
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     recognition = new SpeechRecognition();
     recognition.lang = currentLang === "es" ? "es-MX" : "en-US";
-    recognition.interimResults = false;
+    recognition.interimResults = true;
+    recognition.continuous = false;
     recognition.maxAlternatives = 1;
 
     recognition.onstart = () => {
@@ -579,9 +580,15 @@
     };
 
     recognition.onresult = (e) => {
-      const transcript = e.results[0][0].transcript;
-      document.getElementById("messageInput").value = transcript;
-      sendMessage();
+      // Tomar el resultado final, no los intermedios
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        if (e.results[i].isFinal) {
+          const transcript = e.results[i][0].transcript;
+          document.getElementById("messageInput").value = transcript;
+          recognition.stop();
+          sendMessage();
+        }
+      }
     };
 
     recognition.onend = () => {
