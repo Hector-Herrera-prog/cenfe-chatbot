@@ -522,6 +522,12 @@
   }
 
   // ── i18n ──────────────────────────────────────────────
+  // Pedir permiso al microfono una sola vez al cargar
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => { stream.getTracks().forEach(t => t.stop()); })
+      .catch(() => {});
+  }
   const LANGS = {
     es: {
       placeholder: "Escribe tu mensaje...",
